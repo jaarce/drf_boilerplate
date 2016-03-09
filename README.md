@@ -75,7 +75,3 @@ Welcome to DWM Django Rest Framework Boilerplate!
 >  Endpoint for connecting to social media
 >  :param request:
 >  :return Response():
-
-
-### Table of contents
-[TOC]
