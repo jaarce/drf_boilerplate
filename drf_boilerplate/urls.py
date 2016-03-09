@@ -1,0 +1,35 @@
+"""drf_boilerplate URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.9/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""
+from django.conf.urls import url, include
+from django.contrib import admin
+from rest_framework import routers
+from userprofile.api import ListModelViewSet, AdminLoginViewSet, UserProfileViewSet
+from userprofile.views import SocialMediaConnectViewSet, ManualRegister, ManualLogin
+
+router = routers.SimpleRouter()
+
+router.register(r'social-media', SocialMediaConnectViewSet, 'social_media')
+router.register(r'registration', ManualRegister, 'registration')
+router.register(r'login', ManualLogin, 'login')
+router.register(r'admin/user', UserProfileViewSet, 'admin-user')
+router.register(r'admin/list', ListModelViewSet, 'admin-list')
+router.register(r'admin/login', AdminLoginViewSet, 'admin-login')
+
+urlpatterns = [
+    url(r'^v1/', include(router.urls)),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/', admin.site.urls),
+]

@@ -1,0 +1,12 @@
+Django==1.9.4
+djangorestframework
+markdown
+django-filter
+Pillow
+python-resize-image==1.1.10
+django-boto==0.3.9
+django-storages==1.1.8
+celery==3.1.20
+django-celery==3.1.17
+gunicorn==19.4.5
+docutils
