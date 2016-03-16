@@ -54,14 +54,14 @@ class ManualRegister(viewsets.ViewSet):
             try:
                 User.objects.get(email=user_data.get("email"))
                 return Response({"error": "Email is not available"}, status=status.HTTP_400_BAD_REQUEST)
-            except ObjectDoesNotExist:
-                pass
+            except ObjectDoesNotExist as e:
+                print("Error: \nDetails: {0}".format(e))
 
             try:
                 User.objects.get(username=user_data.get("username"))
                 return Response({"error": "Username is not available"}, status=status.HTTP_400_BAD_REQUEST)
-            except ObjectDoesNotExist:
-                pass
+            except ObjectDoesNotExist as e:
+                print("Error: \nDetails: {0}".format(e))
 
         except ObjectDoesNotExist:
             is_first = True
@@ -94,14 +94,14 @@ class ManualRegister(viewsets.ViewSet):
             try:
                 User.objects.get(email=user_data.get("email"))
                 is_email_existing=True
-            except:
-                pass
+            except ObjectDoesNotExist as e:
+                print("Error: \nDetails: {0}".format(e))
 
             try:
                 User.objects.get(username=user_data.get("username"))
                 is_username_existing=True
-            except:
-                pass
+            except ObjectDoesNotExist as e:
+                print("Error: \nDetails: {0}".format(e))
         except ObjectDoesNotExist:
             is_email_existing = False
             is_username_existing = False
@@ -181,8 +181,8 @@ class SocialMediaConnectViewSet(viewsets.ViewSet):
         try:
             UserProfile.objects.get(user__username=social_data.get("username"))
             is_existing = True
-        except ObjectDoesNotExist:
-            pass
+        except ObjectDoesNotExist as e:
+            print("Error: \nDetails: {0}".format(e))
 
         return Response({"is_existing": is_existing}, status=status.HTTP_200_OK)
 

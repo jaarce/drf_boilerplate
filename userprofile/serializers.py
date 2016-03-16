@@ -23,8 +23,8 @@ class SocialMediaConnectSerializer(serializers.ModelSerializer):
             client = UserProfile.objects.get(social_account__network_id=social_id)
             if validated_data["username"] == validated_data["social_id"]:
                 username = client.user.username
-        except ObjectDoesNotExist:
-            pass
+        except ObjectDoesNotExist as e:
+            print("Error: \nDetails: {0}".format(e))
 
         email = validated_data.get("email", "")
         first_name = validated_data("first_name", "")
@@ -100,8 +100,8 @@ class LoginSerializer(serializers.ModelSerializer):
             user = User.objects.get(username=validated_data["username"])
             Token.objects.get_or_create(user=user)
             return user
-        except ObjectDoesNotExist:
-            pass
+        except ObjectDoesNotExist as e:
+            print("Error: \nDetails: {0}".format(e))
 
 
 class ManualRegisterSerializer(serializers.ModelSerializer):
@@ -140,5 +140,5 @@ class ManualRegisterSerializer(serializers.ModelSerializer):
 
             Token.objects.get_or_create(user=user)
             return user
-        except ObjectDoesNotExist:
-            pass
+        except ObjectDoesNotExist as e:
+            print("Error: \nDetails: {0}".format(e))
