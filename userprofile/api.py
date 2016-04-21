@@ -47,8 +47,7 @@ class AdminLoginViewSet(ViewSet):
             "data": {}
         }
 
-        if password_valid:
-            if user.is_superuser:
+        if password_valid and user.is_superuser:
                 context["status"] = "GRANTED"
                 context["data"] = {
                     "username": user.username,

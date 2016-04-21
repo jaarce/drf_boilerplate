@@ -1,0 +1,28 @@
+language: python
+
+python:
+  - 2.6
+  - 2.7
+
+env:
+  - DJANGO="Django==1.9.4"
+
+matrix:
+  exclude:
+    # Python 3.4 is not supported in Django before 1.7.
+    - env: DJANGO="Django==1.9.4"
+      python: 3.4
+    # Python 2.6 support has been dropped in Django 1.7
+    - python: 2.6
+      env: DJANGO="Django==1.7.2"
+
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+
+script:
+  - python manage.py test drf_boilerplate
+  - coverage run --source=drf_boilerplate manage.py test drf_boilerplate
+
+after_success:
+  - coveralls
