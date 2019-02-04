@@ -3,8 +3,6 @@ Welcome to DWM Django Rest Framework Boilerplate!
 
 [![Build Status](https://travis-ci.org/jaarce/drf_boilerplate.svg)](https://travis-ci.org/jaarce/drf_boilerplate)
 
-[![](http://www.directworksmedia.com/static/images/logo-light.png)](http://www.directworksmedia.com/)
-
 ----------
 
 
