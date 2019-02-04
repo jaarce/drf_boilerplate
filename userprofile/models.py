@@ -6,12 +6,13 @@ from django.db import models
 
 class UserProfile(models.Model):
 
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.CharField(max_length=500, null=True, blank=True)
     social_account = models.OneToOneField("SocialAccount",
                                           null=True,
                                           blank=True,
-                                          help_text="(Facebook ID, Twitter ID, Google+ ID)")
+                                          help_text="(Facebook ID, Twitter ID, Google+ ID)",
+                                          on_delete=models.CASCADE)
 
     def __unicode__(self):
         return self.user.username
