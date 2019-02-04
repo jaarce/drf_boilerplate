@@ -1,4 +1,4 @@
-Welcome to DWM Django Rest Framework Boilerplate!
+Welcome to JA Django Rest Framework Boilerplate!
 ===================
 
 [![Build Status](https://travis-ci.org/jaarce/drf_boilerplate.svg)](https://travis-ci.org/jaarce/drf_boilerplate)
