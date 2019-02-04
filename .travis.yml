@@ -1,7 +1,7 @@
 language: python
 
 python:
-  - 3.7
+  - 3.7.2
 
 env:
   - DJANGO="Django==2.1.5"
@@ -9,8 +9,8 @@ env:
 matrix:
   exclude:
     # Python 3.4 is not supported in Django before 1.7.
-    - env: DJANGO="Django==1.9.4"
-      python: 3.4
+    - env: DJANGO="Django==2.1.5"
+      python: 3.7.2
 
 install:
   - pip install -r requirements.txt
